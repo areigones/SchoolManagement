@@ -11,18 +11,18 @@ public class Subjects {
 	@Id
 	@GeneratedValue
 	private Long id;
-	
+
 	@NotBlank
 	private String fkTeacher;
 	@NotBlank
 	private String fkClass;
 	@NotBlank
 	private String nome;
-	
+
 	public Subjects(){
 		super();
 	}
-	
+
 	public Subjects(Long id, String teacher, String fk_class, String nome) {
 		super();
 		this.id = id;
@@ -30,7 +30,7 @@ public class Subjects {
 		this.fkClass = fk_class;
 		this.nome = nome;
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -53,6 +53,6 @@ public class Subjects {
 	public String toString() {
 		return "Subjects [id=" + id + ", teacher=" + fkTeacher + ", nome=" + nome + "]";
 	}
-	
-	
+
+
 }

@@ -22,11 +22,11 @@ public class Timetable {
 	private String fkSubject;
 	@NotBlank
 	private String dayOfTheWeek;
-	
+
 	public Timetable() {
 		super();
 	}
-	
+
 	public Timetable(Long id, java.util.Date startTime, java.util.Date endTime, String subject, String dayOfTheWeek) {
 		super();
 		this.startTime = startTime;
@@ -34,7 +34,7 @@ public class Timetable {
 		this.fkSubject = subject;
 		this.dayOfTheWeek = dayOfTheWeek;
 	}
-	
+
 	public Long getId() {
 		return id;
 	}

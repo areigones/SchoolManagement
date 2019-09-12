@@ -16,11 +16,11 @@ public class Mark {
 	private Long fkPersonId;
 	@NotBlank
 	private Float grade;
-	
+
 	public Mark() {
 		super();
 	}
-	
+
 	public Mark(Long id, String subject, Long personId, Float grade) {
 		super();
 		this.id = id;
@@ -28,7 +28,7 @@ public class Mark {
 		fkPersonId = personId;
 		this.grade = grade;
 	}
-	
+
 	public String getSubject() {
 		return fkSubject;
 	}
@@ -51,7 +51,7 @@ public class Mark {
 	public String toString() {
 		return "Mark [subject=" + fkSubject + ", PersonId=" + fkPersonId + ", grade=" + grade + "]";
 	}
-	
 
-	
+
+
 }
