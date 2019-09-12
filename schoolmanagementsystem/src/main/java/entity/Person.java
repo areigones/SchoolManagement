@@ -25,12 +25,12 @@ public class Person {
 		super();
 	}
 	
-	public Person(long PersonID, long LoginID, String name, String StudentResponsible) {
+	public Person(long personID, long loginID, String name, String studentResponsible) {
 		super();
-		this.personID=PersonID;
-		this.loginID=LoginID;
+		this.personID=personID;
+		this.loginID=loginID;
 		this.name=name;
-		this.studentResponsible=StudentResponsible;
+		this.studentResponsible=studentResponsible;
 	}
 
 	public long getPersonID() {
