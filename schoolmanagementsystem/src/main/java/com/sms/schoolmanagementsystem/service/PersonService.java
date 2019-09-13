@@ -7,7 +7,12 @@ import org.springframework.stereotype.Service;
 
 import com.sms.schoolmanagementsystem.repository.PersonRepository;
 import com.sms.schoolmanagementsystem.entity.Person;
-
+/**
+ * 
+ * @author JavaAcademy
+ * This service uses its respective repository to implement:
+ * Save, Create, Find, Edit, Delete, and Delete by Id.
+ */
 @Service
 public class PersonService{
 	
