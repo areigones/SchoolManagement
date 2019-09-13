@@ -5,49 +5,73 @@ import java.util.Set;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
+import org.springframework.lang.NonNull;
 
+/**
+ * Entity class of a person. 
+ * This entity has an id, a user name, a password, a set of marks, a name, a student tutor.
+ * This entity will contain all the classes and their respective students.
+ * @author JavaAcademy
+ *
+ */
 @Entity
 @Table(name = "Person")
 public class Person {
+
+	/**
+	 * Primary key, auto-generated and auto-incremented.
+	 */	
 	@Id
-	//@NotBlank
 	@GeneratedValue
 	private long personID;
 	
-	
-//	@OneToOne(mappedBy = "person", cascade = CascadeType.ALL)
-//	private Login login;
-	
+	@NotBlank
 	private String username;
 	
+	@NotBlank
 	private String password;
 	
+
+	/**
+	 * Set of marks of a person.
+	 */
 	@OneToMany(mappedBy = "personMarks", cascade = CascadeType.ALL)
     private Set<Mark> marks;
 	
-	//@NotBlank
+	@NotBlank
 	private String name;
 	
-	//@NotBlank
+	@NonNull
 	private String studentResponsible;
 
-	 @ManyToOne
-	 @JoinColumn
-	 private Sclass personSclasses;
 
+	/**
+	 * Set of classes of a person.
+	 */
+	@ManyToOne
+	@JoinColumn
+	private Sclass personSclasses;
+
+	/**
+	 * Default empty constructor
+	 */
 	public Person() {
 		super();
 	}
 	
+	/**
+	 * Constructor to create a person.
+	 * @param name The name of the person.
+	 * @param studentResponsible The tutor of the student.
+	 * @param username The user name of the person.
+	 * @param password The password of the person.
+	 */
 	public Person(String name, String studentResponsible, String username, String password) {
 		super();
-//		this.personID=personID;
-//		this.marks = marks;
 		this.name = name;
 		this.studentResponsible = studentResponsible;
 		this.username = username;
 		this.password = password;
-//		this.personSclasses = personSclasses;
 	}
 
 	public long getPersonID() {
@@ -58,22 +82,6 @@ public class Person {
 		this.personID = personID;
 	}
 
-//	public Login getLoginID() {
-//		return login;
-//	}
-//
-//	public void setLoginID(Login loginID) {
-//		this.login = loginID;
-//	}
-//
-//	
-//	public Login getLogin() {
-//		return login;
-//	}
-//
-//	public void setLogin(Login login) {
-//		this.login = login;
-//	}
 
 	public Set<Mark> getMarks() {
 		return marks;

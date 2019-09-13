@@ -5,40 +5,60 @@ import java.util.Set;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
-
+/**
+ * Entity class of Subjects. 
+ * This entity has an id, a set of marks, a set of classes, a name and a set of times.
+ * This entity will contain the subjects available in a class.
+ * @author JavaAcademy
+ *
+ */
 @Entity
 @Table(name="subjects")
 public class Subjects {
 
+	/**
+	 * Primary key, auto-generated and auto-incremented.
+	 */
 	@Id
 	@GeneratedValue
 	private Long id;
 
-		
+	/**
+	 * Set of marks of a subject.
+	 */
 	@ManyToMany(mappedBy = "subjects")
 	private Set<Mark> mark;	
 	
-	
+	/**
+	 * Set of classes available.
+	 */	
 	@ManyToMany(mappedBy = "classSubjects")
 	private Set<Sclass> classes;
 	
 	@NotBlank
-	private String nome;
+	private String name;
 	
+	/**
+	 * Set of timetables of a subject.
+	 */
 	@ManyToMany(mappedBy = "timetableSubjects")
 	private Set<Timetable> times;
 
+	/**
+	 * Default empty constructor
+	 */
 	public Subjects(){
 		super();
 	}
 
-	/*public Subjects(Long id, String teacher, String fk_class, String nome) {
+	/**
+	 * Constructor to create a subject.
+	 * @param name Name of the subject.
+	 */
+	public Subjects(String name) {
 		super();
-		this.id = id;
-		this.fkTeacher = teacher;
-		this.fkClass = fk_class;
-		this.nome = nome;
-	}*/
+		this.name = name;
+	}
 
 	public Long getId() {
 		return id;
@@ -47,14 +67,22 @@ public class Subjects {
 		this.id = id;
 	}
 	
-	public String getNome() {
-		return nome;
+	public Set<Sclass> getClasses() {
+		return classes;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
+
+	public void setClasses(Set<Sclass> classes) {
+		this.classes = classes;
 	}
-	
-	
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public Set<Timetable> getTimes() {
 		return times;
 	}
@@ -71,19 +99,13 @@ public class Subjects {
 		this.mark = mark;
 	}
 
-	/*public Set<Sclass> getClasses() {
-		return classes;
-	}
-
-	public void setClasses(Set<Sclass> classes) {
-		this.classes = classes;
-	}
-
 	@Override
 	public String toString() {
-		return "Subjects [id=" + id + ", teacher=" + mark + ", classes=" + classes + ", nome=" + nome + ", times="
-				+ times + "]";
-	}*/
+		return "Subjects [id=" + id + ", mark=" + mark + ", classes=" + classes + ", name=" + name + ", times=" + times
+				+ "]";
+	}
+
+
 
 	
 

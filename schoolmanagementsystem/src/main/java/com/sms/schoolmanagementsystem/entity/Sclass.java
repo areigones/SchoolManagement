@@ -5,13 +5,27 @@ import java.util.Set;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
+/**
+ * Entity class of Sclass. 
+ * This entity has an id, a set of persons, a year, a student limit per class, a name, and a set of subjects.
+ * This entity will contain all the classes and their respective students.
+ * @author JavaAcademy
+ *
+ */
 @Entity
 @Table(name = "sclass")
 public class Sclass {
+
+	/**
+	 * Primary key, auto-generated and auto-incremented.
+	 */
 	@Id
 	@GeneratedValue
 	private long sclassID;
 	
+	/**
+	 * Set of persons in a class.
+	 */	
 	@OneToMany(mappedBy = "personSclasses", cascade = CascadeType.ALL)
     private Set<Person> person;
 	
@@ -22,28 +36,41 @@ public class Sclass {
 	@NotBlank
 	private String name;
 	
+	/**
+	 * Set of subjects in a class.
+	 */
 	@ManyToMany
 	@JoinTable(name = "subjects_class",
     joinColumns = @JoinColumn(name = "subjects_id"),
     inverseJoinColumns = @JoinColumn(name = "sclass_id"))
 	private Set<Subjects> classSubjects;
-	
+
+	/**
+	 * Default empty constructor
+	 */
 	public Sclass() {
 		super();
 	}
 	
-	/*public Sclass(long fkPersonID, int year, int studentLimit, String name) {
+	/**
+	 * Constructor to create a class.
+	 * @param year The year of the class.
+	 * @param studentLimit The maximum number of students in the class.
+	 * @param name The name of the class.
+	 */
+	public Sclass(int year, int studentLimit, String name) {
 		super();
-		this.fkPersonID=fkPersonID;
 		this.year=year;
 		this.studentLimit=studentLimit;
 		this.name=name;
-	}*/
-	
-	
-	
-	public int getYear() {
-		return year;
+	}
+
+	public long getSclassID() {
+		return sclassID;
+	}
+
+	public void setSclassID(long sclassID) {
+		this.sclassID = sclassID;
 	}
 
 	public Set<Person> getPerson() {
@@ -54,12 +81,8 @@ public class Sclass {
 		this.person = person;
 	}
 
-	public Set<Subjects> getClassSubjects() {
-		return classSubjects;
-	}
-
-	public void setClassSubjects(Set<Subjects> classSubjects) {
-		this.classSubjects = classSubjects;
+	public int getYear() {
+		return year;
 	}
 
 	public void setYear(int year) {
@@ -82,29 +105,21 @@ public class Sclass {
 		this.name = name;
 	}
 
-	public long getSclassID() {
-		return sclassID;
-	}
-
-	public void setSclassID(long sclassID) {
-		this.sclassID = sclassID;
-	}
-
-	
-
-	/*public Set<Subjects> getSubjects() {
+	public Set<Subjects> getClassSubjects() {
 		return classSubjects;
 	}
 
-	public void setSubjects(Set<Subjects> subjects) {
-		this.classSubjects = subjects;
+	public void setClassSubjects(Set<Subjects> classSubjects) {
+		this.classSubjects = classSubjects;
 	}
 
 	@Override
 	public String toString() {
-		return "Sclass [sclassID=" + sclassID + ", fkPersonID=" + fkPersonID + ", year=" + year + ", studentLimit="
-				+ studentLimit + ", name=" + name + ", subjects=" + classSubjects + "]";
-	}*/
+		return "Sclass [sclassID=" + sclassID + ", person=" + person + ", year=" + year + ", studentLimit="
+				+ studentLimit + ", name=" + name + ", classSubjects=" + classSubjects + "]";
+	}
+	
+	
 	
 	
 }
